@@ -12,10 +12,10 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:src="@drawable/loginbg"
                 android:layout_width="match_parent"
+                android:layout_height="500dp"
                 android:scaleType="fitXY"
-                android:layout_height="500dp"/>
+                android:src="@drawable/loginbg" />
 
             <ImageView
                 android:src="@drawable/upperbg"
