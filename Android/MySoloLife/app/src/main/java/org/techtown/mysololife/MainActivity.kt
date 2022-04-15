@@ -20,14 +20,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.logoutBtn).setOnClickListener {
-            auth.signOut()
 
-            val intent = Intent(this, IntroActivity::class.java)
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-            startActivity(intent)
-        }
+//        //로그아웃
+//        findViewById<Button>(R.id.logoutBtn).setOnClickListener {
+//            auth.signOut()
+//
+//            val intent = Intent(this, IntroActivity::class.java)
+////            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//
+//            startActivity(intent)
+//        }
+
+
     }
 }
