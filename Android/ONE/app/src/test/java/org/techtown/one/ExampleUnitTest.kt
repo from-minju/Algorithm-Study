@@ -1,4 +1,4 @@
-package org.techtown.mysololife
+package org.techtown.one
 
 import org.junit.Test
 

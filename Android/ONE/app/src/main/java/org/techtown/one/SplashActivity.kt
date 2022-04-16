@@ -1,4 +1,4 @@
-package org.techtown.mysololife
+package org.techtown.one
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.techtown.mysololife.auth.IntroActivity
+import org.techtown.one.auth.IntroActivity
 
 class SplashActivity : AppCompatActivity() {
 

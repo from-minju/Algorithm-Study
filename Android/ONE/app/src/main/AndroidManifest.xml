@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.techtown.mysololife">
+    package="org.techtown.one">
 
     <application
         android:allowBackup="true"
@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySoloLife">
         <activity
-            android:name=".auth.JoinActivity"
+            android:name="org.techtown.one.auth.JoinActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.LoginActivity"
+            android:name="org.techtown.one.auth.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.IntroActivity"
+            android:name="org.techtown.one.auth.IntroActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name="org.techtown.one.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="org.techtown.one.MainActivity"
             android:exported="true" />
     </application>
 

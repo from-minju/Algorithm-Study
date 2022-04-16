@@ -1,4 +1,4 @@
-package org.techtown.mysololife.auth
+package org.techtown.one.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,9 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.techtown.mysololife.MainActivity
-import org.techtown.mysololife.R
-import org.techtown.mysololife.databinding.ActivityLoginBinding
+import org.techtown.one.MainActivity
+import org.techtown.one.R
+import org.techtown.one.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 

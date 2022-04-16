@@ -1,4 +1,4 @@
-package org.techtown.mysololife.fragments
+package org.techtown.one.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -6,11 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import org.techtown.mysololife.R
-import org.techtown.mysololife.databinding.FragmentHomeBinding
+import org.techtown.one.R
+import org.techtown.one.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,24 +39,24 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        binding.tipTap.setOnClickListener{
+        binding.writeTap.setOnClickListener{
             Log.d("HomeFragment", "tipTap")
-            it.findNavController().navigate(R.id.action_homeFragment_to_tipFragment)
+            it.findNavController().navigate(R.id.action_homeFragment_to_writeFragment)
 
         }
 
-        binding.talkTap.setOnClickListener{
-            it.findNavController().navigate(R.id.action_homeFragment_to_talkFragment)
+        binding.listTap.setOnClickListener{
+            it.findNavController().navigate(R.id.action_homeFragment_to_listFragment)
 
         }
 
-        binding.bookmarkTap.setOnClickListener{
-            it.findNavController().navigate(R.id.action_homeFragment_to_bookmarkFragment)
+        binding.chatTap.setOnClickListener{
+            it.findNavController().navigate(R.id.action_homeFragment_to_chatFragment)
 
         }
 
-        binding.storeTap.setOnClickListener{
-            it.findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
+        binding.userTap.setOnClickListener{
+            it.findNavController().navigate(R.id.action_homeFragment_to_userFragment)
 
         }
 
