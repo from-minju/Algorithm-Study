@@ -1,13 +1,16 @@
-package org.techtown.mysololife.fragments
+package com.bokchi.mysolelife.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
-//import org.techtown.mysololife.DataBinderMapperImpl
+import androidx.navigation.findNavController
+import com.bokchi.mysolelife.R
+import com.bokchi.mysolelife.contentsList.ContentListActivity
+import com.bokchi.mysolelife.databinding.FragmentTipBinding
 import org.techtown.mysololife.R
 import org.techtown.mysololife.databinding.FragmentTipBinding
 
@@ -28,22 +31,41 @@ class TipFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tip, container, false)
 
-        binding.homeTap.setOnClickListener{
-            findNavController().navigate(R.id.action_tipFragment_to_homeFragment)
+        binding.category1.setOnClickListener {
+
+            val intent = Intent(context, ContentListActivity::class.java)
+            intent.putExtra("category", "category1")
+            startActivity(intent)
+
         }
 
-        binding.talkTap.setOnClickListener{
-            findNavController().navigate(R.id.action_tipFragment_to_talkFragment)
+        binding.category2.setOnClickListener {
+            val intent = Intent(context, ContentListActivity::class.java)
+            intent.putExtra("category", "category2")
+            startActivity(intent)
+
         }
 
-        binding.bookmarkTap.setOnClickListener{
-            findNavController().navigate(R.id.action_tipFragment_to_bookmarkFragment)
+
+
+        binding.homeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_tipFragment_to_homeFragment)
         }
 
-        binding.storeTap.setOnClickListener{
-            findNavController().navigate(R.id.action_tipFragment_to_storeFragment)
+        binding.talkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_tipFragment_to_talkFragment)
         }
+
+        binding.bookmarkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_tipFragment_to_bookmarkFragment)
+        }
+
+        binding.storeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_tipFragment_to_storeFragment)
+        }
+
         return binding.root
     }
+
 
 }

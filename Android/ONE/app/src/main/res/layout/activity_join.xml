@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:background="@color/mainColor"
-            android:layout_height="150dp">
+            android:layout_height="100dp">
 
             <TextView
                 android:text="회원가입"
@@ -20,31 +20,30 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                />
 
         </LinearLayout>
 
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
+
 
             <EditText
                 android:id="@+id/emailArea"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="email"
+                android:hint="이메일"
                 style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector"
                 />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:background="#999999"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="0.5dp" />
 
 
             <EditText
@@ -52,16 +51,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
-                android:hint="password"
+                android:hint="비밀번호"
                 style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector"
                 />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:background="#999999"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="0.5dp" />
 
 
             <EditText
@@ -69,34 +62,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
-                android:hint="password check"
+                android:hint="비밀번호 확인"
                 style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector"
                 />
 
-            <LinearLayout
+
+            <EditText
+                android:id="@+id/user_name"
                 android:layout_width="match_parent"
-                android:background="#999999"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="0.5dp" />
+                android:layout_height="50dp"
+                android:hint="이름"
+                style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector"
+                />
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="#999999"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="0.5dp" />
+            <EditText
+                android:id="@+id/user_studentID"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="학번"
+                style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector"/>
+
+            <EditText
+                android:id="@+id/user_major"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="전공 "
+                style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector" />
 
 
-        <Button
-            android:id="@+id/joinBtn"
-            android:layout_margin="20dp"
-            android:background="@drawable/background_radius_yellow"
-            android:text="회원가입하기"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+
+
+                <Button
+                    android:id="@+id/joinBtn"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/background_radius_yellow"
+                    android:text="회원가입하기"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
 
         </LinearLayout>
 
