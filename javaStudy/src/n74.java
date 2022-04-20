@@ -18,6 +18,11 @@ class S2 extends S1 {
         System.out.println("Child" + x);
     }
 
+    public static void main(String[] args) {
+        S2 sobj = new S2();
+        sobj.display(10,100);
+    }
+
 //public static void main()이 없으므로 에러남
 //    S2 sobj = new S2();
 //        sobj.display(10,100);

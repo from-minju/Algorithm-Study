@@ -1,3 +1,5 @@
+//switch문에 continue그런거 없어!
+
 public class n69 {
     public static void main(String[] args) {
         int price = 1000;
