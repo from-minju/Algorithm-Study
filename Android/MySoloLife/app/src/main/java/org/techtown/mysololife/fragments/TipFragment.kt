@@ -1,4 +1,4 @@
-package com.bokchi.mysolelife.fragments
+package org.techtown.mysololife.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.bokchi.mysolelife.R
-import com.bokchi.mysolelife.contentsList.ContentListActivity
-import com.bokchi.mysolelife.databinding.FragmentTipBinding
+import org.techtown.mysololife.contentsList.ContentListActivity
 import org.techtown.mysololife.R
 import org.techtown.mysololife.databinding.FragmentTipBinding
 
@@ -20,7 +18,6 @@ class TipFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -34,18 +31,17 @@ class TipFragment : Fragment() {
         binding.category1.setOnClickListener {
 
             val intent = Intent(context, ContentListActivity::class.java)
-            intent.putExtra("category", "category1")
+//            intent.putExtra("category", "category1")
             startActivity(intent)
 
         }
 
-        binding.category2.setOnClickListener {
-            val intent = Intent(context, ContentListActivity::class.java)
-            intent.putExtra("category", "category2")
-            startActivity(intent)
-
-        }
-
+//        binding.category2.setOnClickListener {
+//            val intent = Intent(context, ContentListActivity::class.java)
+//            intent.putExtra("category", "category2")
+//            startActivity(intent)
+//
+//        }
 
 
         binding.homeTap.setOnClickListener {

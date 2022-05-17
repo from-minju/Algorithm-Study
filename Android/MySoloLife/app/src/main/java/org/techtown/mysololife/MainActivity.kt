@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        //로그아웃
+        //로그아웃
 //        findViewById<Button>(R.id.logoutBtn).setOnClickListener {
 //            auth.signOut()
 //

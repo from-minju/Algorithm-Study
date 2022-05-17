@@ -1,4 +1,4 @@
-package com.bokchi.mysolelife.contentsList
+package org.techtown.mysololife.contentsList
 
 data class ContentModel (
     var title: String = "",
