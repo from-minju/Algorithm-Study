@@ -13,12 +13,27 @@ import com.bumptech.glide.Glide
 
 //아이템 레이아웃과 데이터를 실제로 연결하는 역할을 수행
 class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel>) : RecyclerView.Adapter<ContentRVAdapter.Viewholder>() {
+
+    //recycler view item 클릭
+    interface ItemClick {
+        fun onClick(view : View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentRVAdapter.Viewholder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.content_rv_item, parent, false)
         return Viewholder(v)
     }
 
     override fun onBindViewHolder(holder: ContentRVAdapter.Viewholder, position: Int) {
+
+        //item 클릭하면 화면이동할 수 있도록
+       if(itemClick != null) {
+            holder.itemView.setOnClickListener{ v->
+                itemClick?.onClick(v, position)
+            }
+        }
         holder.bindItems(items[position])
     }
 

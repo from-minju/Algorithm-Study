@@ -15,7 +15,7 @@ class ContentShowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content_show)
 
-        val getUrl = intent.getStringExtra("url")
+        val getUrl = intent.getStringExtra("url") //넘어온 url을 받는다.
 
         val webView : WebView = findViewById(R.id.webView)
         webView.loadUrl(getUrl.toString())

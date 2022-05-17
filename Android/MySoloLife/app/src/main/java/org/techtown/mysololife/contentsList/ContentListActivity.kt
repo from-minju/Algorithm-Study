@@ -61,6 +61,21 @@ class ContentListActivity : AppCompatActivity() {
         rv.layoutManager = GridLayoutManager(this, 2) //2열로 나타냄
 
 
+        //아이템 클릭했을
+        rvAdapter.itemClick = object : ContentRVAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+
+                Toast.makeText(baseContext, items[position].title, Toast.LENGTH_LONG).show()
+
+                //웹 뷰에서 열 수 있도록
+                val intent = Intent(this@ContentListActivity, ContentShowActivity::class.java)
+                intent.putExtra("url", items[position].webUrl) //weburl을 넘김
+                startActivity(intent)
+            }
+
+        }
+
+
 
 
 //        // Write a message to the database
