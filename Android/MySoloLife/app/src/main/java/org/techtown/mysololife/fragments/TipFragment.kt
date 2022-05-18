@@ -31,17 +31,17 @@ class TipFragment : Fragment() {
         binding.category1.setOnClickListener {
 
             val intent = Intent(context, ContentListActivity::class.java)
-//            intent.putExtra("category", "category1")
+            intent.putExtra("category", "category1") //category1이나 2가 ContentListActivity.kt의 category변수에 들어감
             startActivity(intent)
 
         }
 
-//        binding.category2.setOnClickListener {
-//            val intent = Intent(context, ContentListActivity::class.java)
-//            intent.putExtra("category", "category2")
-//            startActivity(intent)
-//
-//        }
+        binding.category2.setOnClickListener {
+            val intent = Intent(context, ContentListActivity::class.java)
+            intent.putExtra("category", "category2")
+            startActivity(intent)
+
+        }
 
 
         binding.homeTap.setOnClickListener {
