@@ -1,13 +1,11 @@
 package org.techtown.mysololife.contentsList
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.mysololife.R
 
@@ -16,11 +14,11 @@ import com.bumptech.glide.Glide
 //아이템 레이아웃과 데이터를 실제로 연결하는 역할을 수행
 class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel>) : RecyclerView.Adapter<ContentRVAdapter.Viewholder>() {
 
-//    //recycler view item 클릭
-//    interface ItemClick {
-//        fun onClick(view : View, position: Int)
-//    }
-//    var itemClick : ItemClick? = null
+    //recycler view item 클릭
+    interface ItemClick {
+        fun onClick(view : View, position: Int)
+    }
+    var itemClick : ItemClick? = null
 
 
     //전체 아이템들을 가져와 하나씩 넣어줌(하나의 레이이웃을 만들어줌)
@@ -33,12 +31,12 @@ class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel
     //viewHolder가 재활용 될 때 사용되는 메소드
     override fun onBindViewHolder(holder: ContentRVAdapter.Viewholder, position: Int) {
 
-//        //item 클릭하면 화면이동할 수 있도록
-//       if(itemClick != null) {
-//            holder.itemView.setOnClickListener{ v->
-//                itemClick?.onClick(v, position)
-//            }
-//        }
+        //item 클릭하면 화면이동할 수 있도록
+       if(itemClick != null) {
+            holder.itemView.setOnClickListener{ v->
+                itemClick?.onClick(v, position)
+            }
+        }
         holder.bindItems(items[position])
     }
 
@@ -53,20 +51,8 @@ class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel
     inner class Viewholder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(item : ContentModel) {
 
-            itemView.setOnClickListener{
-                Toast.makeText(context, item.title, Toast.LENGTH_LONG).show()
-                val intent = Intent(context, ContentShowActivity::class.java)
-                intent.putExtra("url", item.webUrl)
-                itemView.context.startActivity(intent)
-            }
-
             val contentTitle = itemView.findViewById<TextView>(R.id.textArea) //여기서의 itemView는 content_rv_item
             val imageViewArea = itemView.findViewById<ImageView>(R.id.imageArea)
-            val bookmarkArea = itemView.findViewById<ImageView>(R.id.bookmarkArea)
-
-            bookmarkArea.setOnClickListener{
-                Toast.makeText(context, "북마크가 클릭되었습니다.", Toast.LENGTH_LONG).show()
-            }
 
             contentTitle.text = item.title
 
