@@ -34,7 +34,9 @@ class ContentListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_content_list)
 
         val items = ArrayList<ContentModel>()
-        val rvAdapter = ContentRVAdapter(baseContext, items) //Adapter에 값을 넘겨준다.
+        val itemKeyList = ArrayList<String>() //파이어베이스의 키값을 저장하는 변수
+
+        val rvAdapter = ContentRVAdapter(baseContext, items, itemKeyList) //Adapter에 값을 넘겨준다.
 
         val database = Firebase.database
 
@@ -47,14 +49,16 @@ class ContentListActivity : AppCompatActivity() {
         }
 
 
-        //데이터를 가져옴
+        //파이어베이스에서 데이터를 가져옴(받아옴)
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 for(dataModel in dataSnapshot.children){
-                    Log.d("ContentListActivity", dataSnapshot.toString())
+                    Log.d("ContentListActivity", dataModel.toString())
+                    Log.d("ContentListActivity", dataModel.key.toString())
                     val item = dataModel.getValue(ContentModel::class.java) //db에서 데이터들을 받아옴
                     items.add(item!!) //받아온 데이터를 items에 넣음
+                    itemKeyList.add(dataModel.key.toString())
                 }
                 rvAdapter.notifyDataSetChanged() //어댑터 동기화/ 데이터를 받아온 후 어댑터를 새롭게 리프레시 동기화 해줘
                 Log.d("ContentListActivity", dataSnapshot.toString())
