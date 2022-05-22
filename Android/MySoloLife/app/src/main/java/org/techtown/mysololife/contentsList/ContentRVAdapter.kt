@@ -87,11 +87,26 @@ class ContentRVAdapter(val context : Context,
                 Log.d("ContentRVAdapter", FBAuth.getUid())
                 Toast.makeText(context, key, Toast.LENGTH_LONG).show()
 
-                FBRef.bookmarkRef
-                    .child(FBAuth.getUid())
-                    .child(key)
-                    .setValue(BookmarkModel(true))
-            }
+
+                if (bookmarkIdList.contains(key)){
+                    //북마크가 있을 때 삭제
+                    bookmarkIdList.remove(key)
+
+                    FBRef.bookmarkRef
+                        .child(FBAuth.getUid())
+                        .child(key)
+                        .removeValue()
+
+
+                } else {
+                    //북마크가 없을 때
+                    FBRef.bookmarkRef
+                        .child(FBAuth.getUid())
+                        .child(key)
+                        .setValue(BookmarkModel(true))
+
+                }
+                }
 
             contentTitle.text = item.title
 

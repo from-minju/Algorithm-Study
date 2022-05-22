@@ -48,9 +48,13 @@ class ContentListActivity : AppCompatActivity() {
 
         val category = intent.getStringExtra("category")
 
+
         if (category == "category1") {
+
             myRef = database.getReference("contents")
+
         } else if (category == "category2") {
+
             myRef = database.getReference("contents2")
         }
 
@@ -97,6 +101,8 @@ class ContentListActivity : AppCompatActivity() {
             //파이어베이스에서 데이터를 가져옴(받아옴)
             val postListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    bookmarkIdList.clear()
 
                     for (dataModel in dataSnapshot.children) {
 //                        Log.d("getBookmarkData", dataModel.key.toString())
