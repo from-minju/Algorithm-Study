@@ -1,5 +1,6 @@
 package org.techtown.one.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import org.techtown.one.R
+import org.techtown.one.board.BoardWriteActivity
 import org.techtown.one.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,11 +18,6 @@ import org.techtown.one.databinding.FragmentHomeBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
@@ -38,6 +35,13 @@ class HomeFragment : Fragment() {
         Log.d("HomeFragment", "onCreateView")
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        //글쓰기 버튼을 눌렀을 경우 -> BoardWriteActivity로 이동시킴
+        binding.writeBtn.setOnClickListener{
+            val intent = Intent(context, BoardWriteActivity::class.java)
+            startActivity(intent)
+        }
+
 
         binding.writeTap.setOnClickListener{
             Log.d("HomeFragment", "tipTap")
