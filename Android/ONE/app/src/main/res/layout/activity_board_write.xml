@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout>
-        
+
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         tools:context=".board.BoardWriteActivity"
         android:orientation="vertical">
-        
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -25,7 +25,8 @@
                     android:layout_height="60dp">
 
                     <TextView
-                        android:text="글쓰기 페이지"
+                        android:text="게시물 작성"
+                        android:textSize="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -65,11 +66,11 @@
                     android:layout_height="0.5dp"
                     android:background="#000000"/>
 
-                <ImageView
-                    android:src="@drawable/plusbtn"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+<!--                <ImageView-->
+<!--                    android:src="@drawable/plusbtn"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"/>-->
 
                 <Button
                     android:id="@+id/writeBtn"
