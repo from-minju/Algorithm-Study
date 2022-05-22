@@ -23,10 +23,16 @@ import org.techtown.mysololife.R
 //import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import org.techtown.mysololife.contentsList.ContentRVAdapter
+import org.techtown.mysololife.utils.FBAuth
+import org.techtown.mysololife.utils.FBRef
 
 class ContentListActivity : AppCompatActivity() {
 
     lateinit var myRef : DatabaseReference //lateinit: 타입만 정해놓고 값은 나중에 넣겠다는
+
+    val bookmarkIdList = mutableListOf<String>()
+
+    lateinit var rvAdapter : ContentRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -36,15 +42,15 @@ class ContentListActivity : AppCompatActivity() {
         val items = ArrayList<ContentModel>()
         val itemKeyList = ArrayList<String>() //파이어베이스의 키값을 저장하는 변수
 
-        val rvAdapter = ContentRVAdapter(baseContext, items, itemKeyList) //Adapter에 값을 넘겨준다.
+        rvAdapter = ContentRVAdapter(baseContext, items, itemKeyList, bookmarkIdList) //Adapter에 값을 넘겨준다.
 
         val database = Firebase.database
 
         val category = intent.getStringExtra("category")
 
-        if(category == "category1") {
+        if (category == "category1") {
             myRef = database.getReference("contents")
-        } else if(category == "category2"){
+        } else if (category == "category2") {
             myRef = database.getReference("contents2")
         }
 
@@ -53,7 +59,7 @@ class ContentListActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                for(dataModel in dataSnapshot.children){
+                for (dataModel in dataSnapshot.children) {
                     Log.d("ContentListActivity", dataModel.toString())
                     Log.d("ContentListActivity", dataModel.key.toString())
                     val item = dataModel.getValue(ContentModel::class.java) //db에서 데이터들을 받아옴
@@ -66,21 +72,47 @@ class ContentListActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("ContentListActivity", "LoadPost:onCanceled", databaseError.toException() )
+                Log.w("ContentListActivity", "LoadPost:onCanceled", databaseError.toException())
             }
         }
 
         myRef.addValueEventListener(postListener)
 
 
-        val rv : RecyclerView = findViewById(R.id.rv)
-
+        val rv: RecyclerView = findViewById(R.id.rv)
 
 
         rv.adapter = rvAdapter
 
         rv.layoutManager = GridLayoutManager(this, 2) //2열로 나타냄
 
+
+        getBookmarkData()
+    }
+
+
+        //북마크 데이터 가져오기
+        private fun getBookmarkData(){
+
+            //파이어베이스에서 데이터를 가져옴(받아옴)
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    for (dataModel in dataSnapshot.children) {
+//                        Log.d("getBookmarkData", dataModel.key.toString())
+//                        Log.d("getBookmarkData", dataModel.toString())
+                        bookmarkIdList.add(dataModel.key.toString())
+                    }
+                    Log.d("ContentListActivity", bookmarkIdList.toString())
+                    rvAdapter.notifyDataSetChanged()
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+            }
+
+            FBRef.bookmarkRef.child(FBAuth.getUid()).addValueEventListener(postListener)
+        }
 
 //        //아이템 클릭했을
 //        rvAdapter.itemClick = object : ContentRVAdapter.ItemClick {
@@ -166,7 +198,5 @@ class ContentListActivity : AppCompatActivity() {
 //        items.add(ContentModel("title14", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFtY3t%2Fbtq65q6P4Zr%2FWe64GM8KzHAlGE3xQ2nDjk%2Fimg.png", "https://philosopher-chan.tistory.com/1248?category=941578"))
 //        items.add(ContentModel("title15", "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOtaMq%2Fbtq67OMpk4W%2FH1cd0mda3n2wNWgVL9Dqy0%2Fimg.png", "https://philosopher-chan.tistory.com/1249?category=941578"))
 
-
-    }
 
 }

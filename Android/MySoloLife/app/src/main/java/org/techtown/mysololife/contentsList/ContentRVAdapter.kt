@@ -17,7 +17,10 @@ import org.techtown.mysololife.utils.FBAuth
 import org.techtown.mysololife.utils.FBRef
 
 //아이템 레이아웃과 데이터를 실제로 연결하는 역할을 수행
-class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel>, val keyList : ArrayList<String>)
+class ContentRVAdapter(val context : Context,
+                       val items : ArrayList<ContentModel>,
+                       val keyList : ArrayList<String>,
+                       val bookmarkIdList : MutableList<String>)
     : RecyclerView.Adapter<ContentRVAdapter.Viewholder>() {
 
 //    //recycler view item 클릭
@@ -31,6 +34,9 @@ class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel
     //viewHolder객체를 생성 후 리턴
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentRVAdapter.Viewholder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.content_rv_item, parent, false)
+
+        Log.d("ContentRVAdapter", keyList.toString())
+        Log.d("ContentRVAdapter", bookmarkIdList.toString())
         return Viewholder(v)
     }
 
@@ -43,7 +49,9 @@ class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel
 //                itemClick?.onClick(v, position)
 //            }
 //        }
-        holder.bindItems(items[position], keyList[position]) //Viewholder의 bindItems랑 매개변수 맞춰줘야함
+
+        //Viewholder의 bindItems랑 매개변수 맞춰줘야함
+        holder.bindItems(items[position], keyList[position])
     }
 
     //아이템 개수가 몇개인지
@@ -68,11 +76,21 @@ class ContentRVAdapter(val context : Context, val items : ArrayList<ContentModel
             val imageViewArea = itemView.findViewById<ImageView>(R.id.imageArea)
             val bookmarkArea = itemView.findViewById<ImageView>(R.id.bookmarkArea)
 
+            //하나씩 들어오는 keyList가 bookmarkIdList에 포함이 되어있느
+            if(bookmarkIdList.contains(key)){
+                bookmarkArea.setImageResource(R.drawable.bookmark_color)
+            } else {
+                bookmarkArea.setImageResource(R.drawable.bookmark_white)
+            }
+
             bookmarkArea.setOnClickListener{
                 Log.d("ContentRVAdapter", FBAuth.getUid())
                 Toast.makeText(context, key, Toast.LENGTH_LONG).show()
 
-                FBRef.bookmarkRef.child(FBAuth.getUid()).child(key).setValue("Good")
+                FBRef.bookmarkRef
+                    .child(FBAuth.getUid())
+                    .child(key)
+                    .setValue(BookmarkModel(true))
             }
 
             contentTitle.text = item.title
