@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.techtown.one.auth.IntroActivity
+import org.techtown.one.utils.FBRef
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,18 +23,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        //로그아웃
+        findViewById<Button>(R.id.logoutBtn).setOnClickListener {
+            auth.signOut()
 
+            val intent = Intent(this, IntroActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-//        //로그아웃
-//        findViewById<Button>(R.id.logoutBtn).setOnClickListener {
-//            auth.signOut()
-//
-//            val intent = Intent(this, IntroActivity::class.java)
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-////            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//
-//            startActivity(intent)
-//        }
+            startActivity(intent)
+        }
 
 
     }

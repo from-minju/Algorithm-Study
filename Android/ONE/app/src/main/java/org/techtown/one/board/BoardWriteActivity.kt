@@ -23,7 +23,7 @@ class BoardWriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_board_write)
+        //setContentView(R.layout.activity_board_write)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
 
@@ -36,11 +36,10 @@ class BoardWriteActivity : AppCompatActivity() {
             Log.d(TAG, title)
             Log.d(TAG, content)
 
-            //데이터 구조
+            //데이터 구
             //board
             //  -key
             //      -boardModel(title, content, uid, time)
-
 
             FBRef.boardRef
                 .push()
@@ -54,3 +53,44 @@ class BoardWriteActivity : AppCompatActivity() {
 
     }
 }
+
+//class BoardWriteActivity : AppCompatActivity() {
+//
+//    private lateinit var binding : ActivityBoardWriteBinding
+//
+//    private val TAG = BoardWriteActivity::class.java.simpleName
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_board_write)
+//
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
+//
+//        binding.writeBtn.setOnClickListener{
+//            val title = binding.titleArea.text.toString()
+//            val content = binding.contentArea.text.toString()
+//            val uid = FBAuth.getUid()
+//            val time = FBAuth.getTime()
+//
+//            Log.d(TAG, title)
+//            Log.d(TAG, content)
+//
+//            //데이터 구조
+//            //board
+//            //  -key
+//            //      -boardModel(title, content, uid, time)
+//
+//
+//            FBRef.boardRef
+//                .push()
+//                .setValue(BoardModel(title, content, uid, time))
+//
+//            Toast.makeText(this, "게시글 입력 완료", Toast.LENGTH_LONG).show()
+//
+//            finish()
+//        }
+//
+//
+//    }
+//}

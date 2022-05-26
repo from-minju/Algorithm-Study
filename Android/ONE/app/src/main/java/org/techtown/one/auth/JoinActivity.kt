@@ -3,6 +3,7 @@ package org.techtown.one.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
@@ -10,13 +11,18 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.techtown.one.MainActivity
 import org.techtown.one.R
+import org.techtown.one.board.BoardModel
 import org.techtown.one.databinding.ActivityJoinBinding
+import org.techtown.one.utils.FBAuth
+import org.techtown.one.utils.FBRef
 
 class JoinActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
     private lateinit var binding: ActivityJoinBinding
+
+    private val TAG = JoinActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -64,8 +70,45 @@ class JoinActivity : AppCompatActivity() {
                 //신규사용자 가입
                 auth.createUserWithEmailAndPassword(email, password1).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    //binding = DataBindingUtil.setContentView(this, R.layout.activity_join)
+
+                    val name = binding.userName.text.toString()
+                    val studentId = binding.userStudentID.text.toString()
+                    val major = binding.userMajor.text.toString()
+                    val grade = binding.userGrade.text.toString()
+//                    val uid = FBAuth.getUid()
+
+//                    Log.d(TAG, name)
+//                    Log.d(TAG, studentId)
+//                    Log.d(TAG, major)
+//                    Log.d(TAG, grade)
+
+
+                    //데이터 구
+                    //board
+                    //  -key
+                    //      -boardModel(title, content, uid, time)
+
+
+//                    FBRef.bookmarkRef.child(FBAuth.getUid()).addValueEventListener(postListener)
+//
+//                    FBRef.bookmarkRef
+//                        .child(FBAuth.getUid())
+//                        .child(key)
+//                        .setValue(BookmarkModel(true))
+
+
+                    FBRef.userRef
+                        .child(FBAuth.getUid())
+                        //.push()
+                        .setValue(UserModel(name, studentId, major, grade))
+
+
+                        //finish()
+
+
                     // Sign in success
-                    Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "회원가입 성공", Toast.LENGTH_LONG).show()
 
                     val intent = Intent(this, MainActivity::class.java)
 //                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -76,6 +119,8 @@ class JoinActivity : AppCompatActivity() {
                     // If sign in fails
                     Toast.makeText(this, "실패", Toast.LENGTH_LONG).show()
                 }
+
+
             }
 
             }
