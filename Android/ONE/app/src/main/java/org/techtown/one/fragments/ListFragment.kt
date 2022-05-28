@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import org.techtown.one.ContentsList.ContentListActivity
 import org.techtown.one.R
-import org.techtown.one.board.BoardListLVAdapter
-import org.techtown.one.board.BoardWriteActivity
+import org.techtown.one.board.BoardListActivity
 import org.techtown.one.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
@@ -31,13 +29,13 @@ class ListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
 
         binding.category1.setOnClickListener {
-            val intent = Intent(context, BoardWriteActivity::class.java)
+            val intent = Intent(context, BoardListActivity::class.java)
             intent.putExtra("category", "category1")
             startActivity(intent)
         }
 
         binding.category2.setOnClickListener{
-            val intent = Intent(context, BoardWriteActivity::class.java)
+            val intent = Intent(context, BoardListActivity::class.java)
             intent.putExtra("category", "category2")
             startActivity(intent)
         }

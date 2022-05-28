@@ -33,6 +33,9 @@
         <activity
             android:name="org.techtown.one.MainActivity"
             android:exported="true" />
+        <activity
+            android:name="org.techtown.one.board.BoardListActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

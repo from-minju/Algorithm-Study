@@ -77,8 +77,6 @@
                 android:background="@drawable/inputbox_selector"
                 />
 
-
-
             <EditText
                 android:id="@+id/user_studentID"
                 android:layout_width="match_parent"
@@ -92,6 +90,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="전공 "
+                style="@style/AuthEditText"
+                android:background="@drawable/inputbox_selector" />
+
+            <EditText
+                android:id="@+id/user_grade"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="학년"
                 style="@style/AuthEditText"
                 android:background="@drawable/inputbox_selector" />
 
