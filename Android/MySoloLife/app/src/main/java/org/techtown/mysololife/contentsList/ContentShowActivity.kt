@@ -7,7 +7,6 @@ import android.widget.Toast
 
 import org.techtown.mysololife.R
 
-
 class ContentShowActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
